@@ -1,0 +1,144 @@
+/**
+ Bootstrap
+ */
+@import "../bower_components/bootstrap/less/bootstrap.less";
+
+
+/**
+ * Some colors from http://www.materialpalette.com/
+ */
+@mtblue: #1976D2;
+@mtlightblue:#2196F3;
+@mtlime:#AFB42B;
+@mtyellow:#FFEB3B;
+@mtbluegrey:#455A64;
+@mtgrey:#9E9E9E;
+@mtdeeppurple:#512DA8;
+@mtpurple:#673AB7;
+@chartdefault: @mtlime;
+@chartdefault-lead: @mtyellow;
+
+@mttext:#212121;
+@mttext2:#727272;
+
+/**
+ App styles
+ */
+
+/* Live stats + charts */
+.chart {
+    rect {
+        fill: @chartdefault;
+        transition: fill 1s ease 0.5s;
+        &.leader {
+            fill: @chartdefault-lead;
+            transition: fill 1s ease 0.5s;
+        }
+    }
+
+    text {
+        fill: @mttext2;
+        font-family: helvetica, sans-serif;
+        font-size: 28px;
+        text-anchor: end;
+        /*stroke:#555;*/
+
+        &.title {
+            fill: @mttext;
+            text-anchor: start;
+            fill:black;
+            font-size:22px;
+        }
+    }
+}
+
+/* sidebar smallcharts */
+.chartlist {
+    >div {
+        /*border:1px solid #888;*/
+        /*border-radius:5px;*/
+        padding:5px;
+        margin:5px;
+    }
+    h2 {
+        font-size:12pt;
+        font-weight:bold;
+    }
+    .chart {
+        text {
+            font-size:22px;
+            &.title {
+                text-anchor: start;
+                fill:black;
+                font-size:12px;
+            }
+        }
+    }
+}
+
+
+/**
+ * Session-Specific Chart Coloring
+ */
+.session-0 {
+    .chart rect,
+    .chartlist .chart rect {
+        fill:@mtblue;
+        &.leader { fill:@mtlightblue; }
+    }
+}
+.session-1 {
+    .chart rect,
+    .chartlist .chart rect {
+        fill:@mtpurple;
+        &.leader { fill:@mtdeeppurple; }
+    }
+}
+.session-2 {
+    .chart rect,
+    .chartlist .chart rect {
+        fill:@mtlime;
+        &.leader { fill:@mtyellow; }
+    }
+}
+.session-3 {
+    .chart rect,
+    .chartlist .chart rect {
+        fill:@mtbluegrey;
+        &.leader { fill:@mtgrey; }
+    }
+}
+
+
+/* Control form */
+.new-donation {
+    form {
+/*        .form-inline;
+        >div {
+            .form-group;
+        }
+        select, input {
+            .form-control;
+        }*/
+        button {
+            .btn;
+            .btn-default;
+        }
+    }
+    .clearfix;
+}
+
+.table {
+    td.right, th.right {
+        text-align:right;
+    }
+}
+
+.layout {
+    button.active {
+        i {
+            .glyphicon;
+            .glyphicon-ok;
+        }
+    }
+}
