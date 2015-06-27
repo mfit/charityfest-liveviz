@@ -44,11 +44,11 @@ app.use(function(req, res, next){
 });
 
 app.get("/", function(req, res){
-  res.render('index', {});
+  res.render('live', {});
 });
 
-app.get("/live", function(req, res){
-  res.render('live', {});
+app.get("/backend", function(req, res){
+  res.render('backend', {});
 });
 
 app.get("/projects", function(req, res) {
