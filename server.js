@@ -16,8 +16,12 @@ var runningPortNumber = process.env.PORT;
 
 var backend = require('./server/data.js');
 var config = JSON.parse(fs.readFileSync('data/projects.json'));
-// console.log(config);
+
 var myBackend = new backend.backend(config);
+
+
+console.log(config);
+console.log(runningPortNumber);
 
 app.configure(function(){
 
