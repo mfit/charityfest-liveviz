@@ -23,15 +23,17 @@ Display donations-stats for a charity event using D3, angular, express, socket.i
 
  - Checkout / Download the Project
  - Open shell / cmd.exe / Power shell and change into the project folder, then:
+   
+`npm install`
 
-     npm install
-     bower install
+`bower install`
 
    With these commands, all necessary packages will be downloaded.
 
  - Next, start the application  with:
 
-     grunt
+`grunt`
+
 
    This will start-up the development server.
    Open the browser at location `http://localhost:1337`
