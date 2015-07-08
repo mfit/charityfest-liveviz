@@ -1,21 +1,10 @@
-charityfest-liveviz
-===================
+# charityfest-liveviz
 
-Display donations-stats for a charity event.
+Display donations-stats for a charity event using D3, angular, express, socket.io.
 
-Architecture
-------------
-D3, angular, express, socket.io
+## Installation
 
-
-
-Installation
-------------
-
-Download and unzip, or clone the project.
-
-Prerequisites
-^^^^^^^^^^^^^
+### Prerequisites
 
  - NPM / Node
    https://www.npmjs.com/package/npm
@@ -29,8 +18,7 @@ Prerequisites
  - Bower
    (Install with `npm install -g bower` on the command line, after npm is installed )
 
-Install
-^^^^^^^
+### Install
 
  - Checkout / Download the Project
  - Open shell / cmd.exe / Power shell and change into the project folder
@@ -43,8 +31,7 @@ Install
    Open the browser at location `http://localhost:1337` and `http://localhost:1337/backend` for the live-view and the control panel, respectively.
 
 
-Configuration
-^^^^^^^^^^^^^
+### Configuration
 
  - Sessions and projects can be configured (names, etc.) in `PPROJECTFOLDER/data/projects.json` (use a text editor).
  - Donations are kept in `PROJECTFOLDER/data/donations.csv`. If you empty this file, you start from a clean state.
