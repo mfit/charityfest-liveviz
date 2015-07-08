@@ -1,0 +1,35 @@
+{
+    "sessions": [
+        {
+            "id": 0,
+            "title": "Session1"
+        },
+        {
+            "id": 1,
+            "title": "Session2"
+        },
+        {
+            "id": 2,
+            "title": "Session3"
+        },
+        {
+            "id": 3,
+            "title": "Session4"
+        }
+    ],
+    "projects": [
+        {"id":0, "title": "Artist1", "sessionId":0},
+        {"id":1, "title": "Artist2", "sessionId":0},
+
+        {"id":2, "title": "Artist3", "sessionId":1},
+        {"id":3, "title": "Artist4", "sessionId":1},
+        {"id":99, "title": "ExtraArtist", "sessionId":1},
+
+        {"id":4, "title": "Artist5", "sessionId":2},
+        {"id":5, "title": "Artist6", "sessionId":2},
+
+        {"id":6, "title": "Artist7", "sessionId":3},
+        {"id":7, "title": "Artist8", "sessionId":3}
+    ],
+    "donationsFile":"data/donations.csv"
+}

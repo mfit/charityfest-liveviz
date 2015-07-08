@@ -1,7 +1,21 @@
 var fs = require('fs');
 var os = require('os');
 
-var myBackend = function(config) {
+// var donations = function() {
+//   return this;
+// };
+
+// var projects = function() {
+//   return this;
+// };
+
+// var sessions = function() {
+//   return this;
+// };
+
+var myBackend = function(configFile) {
+
+  var config = JSON.parse(fs.readFileSync(configFile));
 
   var projects = config.projects,
     sessions = config.sessions,
@@ -38,11 +52,6 @@ var myBackend = function(config) {
     }
   }
 
-  readDonationsLog(file);
-
-  console.log("Logging to " + file);
-  fp = fs.openSync(file, 'a');
-
   this.addDonation = function(projectId, amount) {
 
     // Increase tally/counter
@@ -64,6 +73,9 @@ var myBackend = function(config) {
     return donation;
   };
 
+  this.removeDonation = function(donationId) {
+    // TODO
+  };
 
   this.getStatus = function(session) {
     var plist;
@@ -105,7 +117,22 @@ var myBackend = function(config) {
 
   this.getDonations = function() {
     return donations;
-  }
+  };
+
+  this.setProjects = function() {
+    // TODO
+  };
+
+  this.setSesions = function() {
+    // TODO
+  };
+
+  //
+  //
+  readDonationsLog(file);
+  console.log("Logging to " + file);
+  fp = fs.openSync(file, 'a');
+
 
   return this;
 };

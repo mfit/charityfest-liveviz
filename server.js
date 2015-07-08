@@ -1,10 +1,10 @@
-/*************************************
-//
-// donations app
-//
-**************************************/
+/**
+ * Donations Backend
+ * =================
+ *
+ * Express / NodeServer
+ */
 
-var fs = require('fs');
 var express = require('express');
 var bodyParser = require('body-parser')
 var device  = require('express-device');
@@ -15,13 +15,9 @@ var io = require('socket.io').listen(server);
 var runningPortNumber = process.env.PORT;
 
 var backend = require('./server/data.js');
-var config = JSON.parse(fs.readFileSync('data/projects.json'));
+var myBackend = new backend.backend('data/projects.json');
 
-var myBackend = new backend.backend(config);
-
-
-console.log(config);
-console.log(runningPortNumber);
+console.log("Port number " + runningPortNumber);
 
 app.configure(function(){
 
@@ -47,14 +43,24 @@ app.use(function(req, res, next){
   next();
 });
 
+/*
+ * frontend view
+ */
 app.get("/", function(req, res){
   res.render('live', {});
 });
 
+/*
+ * backend / control view
+ */
 app.get("/backend", function(req, res){
   res.render('backend', {});
 });
 
+
+//
+// rest resources
+//
 app.get("/projects", function(req, res) {
   res.json(myBackend.getProjects());
 });
@@ -107,17 +113,7 @@ app.post("/layout", function(req, res) {
 });
 
 
-// process incoming socket events
-// dont need this for now
-// io.sockets.on('connection', function (socket) {
-//   // // Process update
-//   // socket.on('update', function(data, fn){
-//   //   console.log(data);
-//   //   io.sockets.emit('update', data);
-//   //   fn();//call the client back to clear out the field
-//   // });
-// });
-
-
+//
+// Start up server
+//
 server.listen(runningPortNumber);
-
