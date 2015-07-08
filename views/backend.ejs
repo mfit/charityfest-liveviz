@@ -60,14 +60,14 @@
             <h2>Donations</h2>
             <table class="table">
               <tr>
-                <th>Date</th>
-                <th>Project</th>
                 <th class="right">Amount</th>
+                <th>Project</th>
+                <th>Date</th>
               </tr>
               <tr ng-repeat="don in c.getDonations() | limitTo:25:0">
-                <td>{{don.date | date : 'HH:mm:ss'}} <small>{{don.date | date : fullDate}}</small></td>
-                <td>{{c.projectLookup[don.projectId].title}}</td>
                 <td class="right">{{don.amount}}</td>
+                <td>{{c.projectLookup[don.projectId].title}}</td>
+                <td>{{don.date | date : 'HH:mm:ss'}} <small>{{don.date | date : fullDate}}</small></td>
               </tr>
             </table>
           </div>

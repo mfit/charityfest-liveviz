@@ -98,7 +98,7 @@ var liveGraphApp = function() {
         ;
 
     if (! (config.notext || false)) {
-      // .. and append text
+      // .. and append text (numeric value)
       bar.append("text")
           .attr("x", barWidth - barBorder - 10)
           .attr("y", barHeight - 20)
@@ -116,6 +116,13 @@ var liveGraphApp = function() {
            .attr('class', 'title')
            .text(function(d) { return d.title; });
       }
+    }
+
+    if(setup.projects) {
+      // Set css classes for session and project to bars
+      chart.selectAll("rect")
+            .data(setup.projects)
+            .attr('class', function(d) { return 'bar-session-' + d.sessionId + ' bar-id-' + d.id; });
     }
 
     /**
@@ -138,11 +145,12 @@ var liveGraphApp = function() {
 
       chart.selectAll("rect")
         .data(newdata)
+        .classed("leader", function(d, i) { return i==maxindex; })
         .transition().duration(750).ease("bounce")
         .attr("y", function(d) { return barHeight - y(d); })
         .attr("height", y)
-        .attr('class', function(d, i) { return i==maxindex ? 'leader' : ''; })
         ;
+
       chart.selectAll("text.num")
         .data(newdata)
         .text(function(d) { return d; })
@@ -207,18 +215,22 @@ var liveGraphApp = function() {
    * in one chart).
    */
   function mapOverviewChartConfig(allStates, layoutConfig, classtype) {
-    var data = Object.keys(allStates)
+    var projects = Object.keys(allStates)
       .map(function(k) { return allStates[k]; })
       .map(function(obj) {
-        return obj.projects.map(function(p) { return p.value; })
+        return obj.projects.map(function(p) { return p; })
       })
-      .reduce(function(l, item) { return l.concat(item) }, []);
+      .reduce(function(l, item) { return l.concat(item) }, []),
+    data = projects
+      .map(function(p) { return p.value; });
+
     layoutConfig.notext = true;
     return {
       title: 'Overview',
       class: classtype,
       config: layoutConfig,
-      series: data
+      series: data,
+      projects: projects,
     }
   };
 
