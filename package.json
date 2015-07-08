@@ -9,7 +9,7 @@
   "dependencies": {
     "body-parser": "^1.13.1",
     "ejs": "~0.8.5",
-    "express": "~3.4.6",
+    "express": "^3.4.8",
     "express-device": "~0.3.7",
     "socket.io": "~0.9.16"
   },
