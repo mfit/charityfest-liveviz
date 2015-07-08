@@ -69,7 +69,8 @@ var liveGraphApp = function() {
     var barWidth = width / n;
     var barHeight = height - 40;
 
-    console.log("setting up chart ... ", setup);
+    // console.log("setting up chart ... ", setup);
+
     var y = getScale(barHeight, maxY);
 
 
@@ -134,14 +135,13 @@ var liveGraphApp = function() {
       // Index with the hightest value
       var maxindex = newdata.indexOf(maxvalue);
 
+      console.log("Testing for scale update , its ", maxvalue, maxY);
+
       // Check for rescaling, if maxvalue to high or too low
-      if(maxvalue > maxY) {
+      if(maxvalue > maxY || maxvalue < 0.4*maxY) {
         maxY = maxvalue * 1.5;
-        y = getScale(barHeight, maxY);
-      } else if (maxvalue < 0.4*maxY) {
-         maxY = maxvalue * 0.6;
-         y = getScale(barHeight, maxY);
       }
+      y = getScale(barHeight, maxY);
 
       chart.selectAll("rect")
         .data(newdata)
@@ -308,7 +308,7 @@ var liveGraphApp = function() {
         // Keep copy of state
         chartStates[cobj.id] = cobj;
 
-        console.log(cobj);
+        // console.log(cobj);
         var flatValues = cobj.projects.map(function(p) { return p.value; });
         sessionCharts[cobj.id].updateGraph(flatValues);
 
